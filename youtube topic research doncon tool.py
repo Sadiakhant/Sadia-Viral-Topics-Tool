@@ -16,25 +16,28 @@ days = st.number_input("Enter Days to Search (1-30):", min_value=1, max_value=30
 
 # List of broader keywords
 keywords = [
- "LECA for plants", "Semi-hydroponics for houseplants", "Growing plants in LECA", "LECA vs soil",  
- "LECA plant care", "LECA setup for beginners", "Houseplant care", "Indoor plant care",  
- "Soilless growing method", "Hydroponic houseplants", "How to move plants from soil to LECA",  
- "LECA plant transition", "LECA watering guide", "Best plants for LECA", "LECA nutrient solution",  
- "LECA reservoir setup", "LECA flushing guide", "How to clean LECA", "Common LECA mistakes",  
- "LECA plant root rot prevention", "LECA maintenance tips", "Best indoor plants for beginners",  
- "Low-light indoor plants", "Houseplant fertilization guide", "How to prune houseplants",  
- "Repotting indoor plants", "Common houseplant mistakes", "How to propagate houseplants",  
- "DIY self-watering planters", "Houseplant humidity hacks", "How to grow large indoor plants",  
- "Indoor plant growth hacks", "Moss pole for climbing plants", "How to keep plants upright",  
- "Root-bound plant solutions", "How to prevent overwatering in houseplants",  
- "Best soil mix for indoor plants", "Best plants for north-facing windows",  
- "How to light-map your home for plants", "Sheer curtains for plant protection",  
- "How to protect plants from drafts", "Indoor plant lighting guide", "LECA vs Soil: Which Is Better?",  
- "Top 5 Mistakes Beginners Make with LECA", "LECA Watering Guide: How Much Water Do Plants Need?",  
- "Best Plants for LECA: Top 10 Picks", "LECA for Beginners: Step-by-Step Guide",  
- "DIY Moss Pole That Stays Moist Longer", "LECA Root Rot: How to Prevent & Fix It",  
- "The Truth About Using LECA for Houseplants"
+ "Houseplant care", "Indoor plant care", "Best indoor plants", "Low-maintenance houseplants",  
+ "Watering indoor plants", "How to grow houseplants", "Houseplant fertilizing guide",  
+ "Common houseplant mistakes", "Best soil for houseplants", "Best pots for indoor plants",  
+ "How to prune indoor plants", "Repotting houseplants", "When to repot indoor plants",  
+ "Fast-growing indoor plants", "How to propagate houseplants", "Best plants for small spaces",  
+ "Low-light indoor plants", "Best plants for bright light", "Indoor plant lighting guide",  
+ "How to create a light map for plants", "Best plants for north-facing windows",  
+ "Sheer curtains for plant protection", "How to protect plants from cold drafts",  
+ "How to make a plant grow faster", "DIY plant trellis for climbing plants",  
+ "How to keep plants upright", "Root-bound plant solutions",  
+ "How to prevent overwatering in houseplants", "How to clean plant leaves",  
+ "Self-watering planters DIY", "Houseplant humidity hacks",  
+ "LECA vs Soil: Which is better?", "How to grow large indoor plants",  
+ "Moss pole for climbing plants", "Top 5 houseplant mistakes to avoid",  
+ "Why your houseplant is dying and how to fix it", "Best plants for pet owners",  
+ "Best plants for beginners", "How to transition plants from soil to water",  
+ "Top 10 houseplants for beginners", "Best plants for semi-hydroponics",  
+ "Hydroponic houseplants", "Best trailing plants for indoor spaces",  
+ "Plants that purify indoor air", "How to keep plants alive indoors",  
+ "Common mistakes when growing indoor plants", "Indoor plant care for beginners"
 ]
+
 
 
 
