@@ -14,7 +14,7 @@ st.title("YouTube Viral Topics Tool")
 # Input Fields
 days = st.number_input("Enter Days to Search (1-30):", min_value=1, max_value=30, value=5)
 
-# List of broader keywords
+# List of broader keywords with high-engagement topics
 keywords = [
  "Houseplant care", "Indoor plant care", "Best indoor plants", "Low-maintenance houseplants",  
  "Watering indoor plants", "How to grow houseplants", "Houseplant fertilizing guide",  
@@ -35,8 +35,22 @@ keywords = [
  "Top 10 houseplants for beginners", "Best plants for semi-hydroponics",  
  "Hydroponic houseplants", "Best trailing plants for indoor spaces",  
  "Plants that purify indoor air", "How to keep plants alive indoors",  
- "Common mistakes when growing indoor plants", "Indoor plant care for beginners"
+ "Common mistakes when growing indoor plants", "Indoor plant care for beginners",  
+
+ # 🔥 High-Engagement Keywords (Trending Content Topics)
+ "Top 5 Mistakes Beginners Make with Houseplants", "Best Low-Light Plants That Thrive Anywhere",  
+ "How to Revive a Dying Houseplant", "LECA vs Soil: Which One is Right for You?",  
+ "How to Grow a Giant Monstera Indoors", "The Ultimate Guide to Propagating Plants in Water",  
+ "Best Indoor Plants for Pet Owners", "Houseplants You’re Overwatering (And How to Fix It)",  
+ "DIY Self-Watering Planters for Indoor Plants", "5 Easy Hacks to Keep Your Plants Healthy",  
+ "How to Grow Big, Lush Houseplants Fast", "Indoor Plant Care Myths You Should Stop Believing",  
+ "Moss Poles vs Trellises: Which is Best for Your Plants?",  
+ "How to Pick the Perfect Pot for Your Indoor Plants",  
+ "Best Indoor Plants for Air Purification", "Why Your Houseplant Leaves Are Turning Yellow",  
+ "How Often Should You Water Your Houseplants?", "Common Houseplant Pests and How to Get Rid of Them",  
+ "Top 10 Indoor Plants That Anyone Can Grow", "Best Plants for Small Apartments and Spaces"
 ]
+
 
 
 
