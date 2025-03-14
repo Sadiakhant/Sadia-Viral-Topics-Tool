@@ -2,8 +2,8 @@ import streamlit as st
 import requests
 from datetime import datetime, timedelta
 
-# YouTube API Key
-API_KEY = "YOUR_YOUTUBE_API_KEY"  # AIzaSyACH1qjm6FuvEgvgxdA898_dDkMolyYcIM
+# YouTube API Key (Updated)
+API_KEY = "AIzaSyACH1qjm6FuvEgvgxdA898_dDkMolyYcIM"
 YOUTUBE_SEARCH_URL = "https://www.googleapis.com/youtube/v3/search"
 YOUTUBE_VIDEO_URL = "https://www.googleapis.com/youtube/v3/videos"
 YOUTUBE_CHANNEL_URL = "https://www.googleapis.com/youtube/v3/channels"
