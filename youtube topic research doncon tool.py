@@ -3,7 +3,7 @@ from googleapiclient.discovery import build
 import datetime
 
 # YouTube API Configuration
-API_KEY = "AIzaSyACH1qjm6FuvEgvgxdA898_dDkMolyYcIM"  # Your API Key
+API_KEY = AIzaSyACH1qjm6FuvEgvgxdA898_dDkMolyYcIM
 youtube = build("youtube", "v3", developerKey=API_KEY)
 
 # Input Fields
