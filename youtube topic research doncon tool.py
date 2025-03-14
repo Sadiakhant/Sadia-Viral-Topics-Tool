@@ -1,128 +1,66 @@
 import streamlit as st
-import requests
-from datetime import datetime, timedelta
+from googleapiclient.discovery import build
+import datetime
 
-# YouTube API Key
-API_KEY = "AIzaSyACH1qjm6FuvEgvgxdA898_dDkMolyYcIM"
-YOUTUBE_SEARCH_URL = "https://www.googleapis.com/youtube/v3/search"
-YOUTUBE_VIDEO_URL = "https://www.googleapis.com/youtube/v3/videos"
-YOUTUBE_CHANNEL_URL = "https://www.googleapis.com/youtube/v3/channels"
-
-# Streamlit App Title
-st.title("YouTube Viral Topics Tool")
+# YouTube API Configuration
+API_KEY = "AIzaSyACH1qjm6FuvEgvgxdA898_dDkMolyYcIM"  # Your API Key
+youtube = build("youtube", "v3", developerKey=API_KEY)
 
 # Input Fields
-days = st.number_input("Enter Days to Search (1-360):", min_value=1, max_value=360, value=5)
+max_results = st.slider("Select Number of Trending Videos", 5, 50, 10)
 
-# List of broader keywords
+# Calculate Date for Past 7 Days
+seven_days_ago = (datetime.datetime.utcnow() - datetime.timedelta(days=7)).isoformat() + "Z"
+
+# Target Keywords for Your Niche
 keywords = [
-    "Funny travel", "Travel humor", "Country facts", "Weird laws", "Funny geography", 
-    "Hilarious maps", "Travel jokes", "Comedic travel", "Funny world facts", 
-    "Strange countries", "Crazy borders", "Quirky culture", "Odd traditions", 
-    "Hidden gems", "Bizarre places", "Fun geography", "Wacky travel", 
-    "Travel memes", "Unexpected facts", "Tourist mistakes", "Smallest countries", 
-    "Funny stereotypes", "Weirdest foods", "Hilarious accents", "Travel fails", 
-    "Funny comparisons", "Comedic history", "Surprising travel", "Humor travel guide", 
-    "Odd travel tips", "Unique countries", "Weird world", "Strange landmarks", 
-    "Obscure places", "Tiny nations", "Wacky history", "Fun world trivia", 
-    "Shocking facts", "Funny maps", "Comedic facts", "Weird cultures", 
-    "Ridiculous customs", "Bizarre traditions", "Hilarious history", "Geography humor", 
-    "Travel comedy", "Funny travel show", "Odd geography", "Crazy travel tips", 
+    "Funny travel", "Travel humor", "Country facts", "Weird laws", "Funny geography",
+    "Hilarious maps", "Travel jokes", "Comedic travel", "Funny world facts",
+    "Strange countries", "Crazy borders", "Quirky culture", "Odd traditions",
+    "Hidden gems", "Bizarre places", "Fun geography", "Wacky travel",
+    "Travel memes", "Unexpected facts", "Tourist mistakes", "Smallest countries",
+    "Funny stereotypes", "Weirdest foods", "Hilarious accents", "Travel fails",
+    "Funny comparisons", "Comedic history", "Surprising travel", "Humor travel guide",
+    "Odd travel tips", "Unique countries", "Weird world", "Strange landmarks",
+    "Obscure places", "Tiny nations", "Wacky history", "Fun world trivia",
+    "Shocking facts", "Funny maps", "Comedic facts", "Weird cultures",
+    "Ridiculous customs", "Bizarre traditions", "Hilarious history", "Geography humor",
+    "Travel comedy", "Funny travel show", "Odd geography", "Crazy travel tips",
     "Satirical travel", "Humorous maps"
 ]
 
-# Fetch Data Button
-if st.button("Fetch Data"):
-    try:
-        # Calculate date range
-        start_date = (datetime.utcnow() - timedelta(days=int(days))).isoformat("T") + "Z"
-        all_results = []
-
-        # Iterate over the list of keywords
-        for keyword in keywords:
-            st.write(f"Searching for keyword: {keyword}")
-
-            # Define search parameters
-            search_params = {
-                "part": "snippet",
-                "q": keyword,
-                "type": "video",
-                "order": "viewCount",
-                "publishedAfter": start_date,
-                "maxResults": 5,
-                "key": API_KEY,
+# Function to Search for Trending Videos in the Niche
+def get_trending_videos():
+    trending_videos = []
+    for keyword in keywords:
+        request = youtube.search().list(
+            part="snippet",
+            q=keyword,
+            type="video",
+            order="viewCount",
+            maxResults=max_results,
+            publishedAfter=seven_days_ago  # Fetches videos from the past 7 days
+        )
+        response = request.execute()
+        
+        for item in response.get("items", []):
+            video_data = {
+                "Title": item["snippet"]["title"],
+                "Channel": item["snippet"]["channelTitle"],
+                "Published Date": item["snippet"]["publishedAt"],
+                "Video Link": f"https://www.youtube.com/watch?v={item['id']['videoId']}"
             }
+            trending_videos.append(video_data)
+    
+    return trending_videos
 
-            # Fetch video data
-            response = requests.get(YOUTUBE_SEARCH_URL, params=search_params)
-            data = response.json()
-
-            # Check if "items" key exists
-            if "items" not in data or not data["items"]:
-                st.warning(f"No videos found for keyword: {keyword}")
-                continue
-
-            videos = data["items"]
-            video_ids = [video["id"]["videoId"] for video in videos if "id" in video and "videoId" in video["id"]]
-            channel_ids = [video["snippet"]["channelId"] for video in videos if "snippet" in video and "channelId" in video["snippet"]]
-
-            if not video_ids or not channel_ids:
-                st.warning(f"Skipping keyword: {keyword} due to missing video/channel data.")
-                continue
-
-            # Fetch video statistics
-            stats_params = {"part": "statistics", "id": ",".join(video_ids), "key": API_KEY}
-            stats_response = requests.get(YOUTUBE_VIDEO_URL, params=stats_params)
-            stats_data = stats_response.json()
-
-            if "items" not in stats_data or not stats_data["items"]:
-                st.warning(f"Failed to fetch video statistics for keyword: {keyword}")
-                continue
-
-            # Fetch channel statistics
-            channel_params = {"part": "statistics", "id": ",".join(channel_ids), "key": API_KEY}
-            channel_response = requests.get(YOUTUBE_CHANNEL_URL, params=channel_params)
-            channel_data = channel_response.json()
-
-            if "items" not in channel_data or not channel_data["items"]:
-                st.warning(f"Failed to fetch channel statistics for keyword: {keyword}")
-                continue
-
-            stats = stats_data["items"]
-            channels = channel_data["items"]
-
-            # Collect results
-            for video, stat, channel in zip(videos, stats, channels):
-                title = video["snippet"].get("title", "N/A")
-                description = video["snippet"].get("description", "")[:200]
-                video_url = f"https://www.youtube.com/watch?v={video['id']['videoId']}"
-                views = int(stat["statistics"].get("viewCount", 0))
-                subs = int(channel["statistics"].get("subscriberCount", 0))
-
-                if subs < 3000:  # Only include channels with fewer than 100,000 subscribers
-                    all_results.append({
-                        "Title": title,
-                        "Description": description,
-                        "URL": video_url,
-                        "Views": views,
-                        "Subscribers": subs
-                    })
-
-        # Display results
-        if all_results:
-            st.success(f"Found {len(all_results)} results across all keywords!")
-            for result in all_results:
-                st.markdown(
-                    f"**Title:** {result['Title']}  \n"
-                    f"**Description:** {result['Description']}  \n"
-                    f"**URL:** [Watch Video]({result['URL']})  \n"
-                    f"**Views:** {result['Views']}  \n"
-                    f"**Subscribers:** {result['Subscribers']}"
-                )
-                st.write("---")
-        else:
-            st.warning("No results found for channels with fewer than 100,000 subscribers.")
-
-    except Exception as e:
-        st.error(f"An error occurred: {e}")
-
+# Fetch Trending Videos
+if st.button("Find Trending Videos"):
+    trending_videos = get_trending_videos()
+    
+    if trending_videos:
+        st.write("### Trending Videos in Your Niche 🎬 (Past 7 Days)")
+        for video in trending_videos:
+            st.write(f"📌 **{video['Title']}**  \n🎥 Channel: {video['Channel']}  \n🗓 Published: {video['Published Date']}  \n🔗 [Watch Video]({video['Video Link']})")
+    else:
+        st.write("No trending videos found for your niche right now. Try again later!")
