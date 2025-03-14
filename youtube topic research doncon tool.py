@@ -16,23 +16,19 @@ days = st.number_input("Enter Days to Search (1-30):", min_value=1, max_value=30
 
 # List of broader keywords
 keywords = [
-    "Humorous Country-Introduction Videos", "Entertaining & Informative Travel Content", 
-    "Funny Travel Videos", "Comedy Travel YouTube", "Hilarious Country Facts", 
-    "Weird Country Laws", "Quirky Country Facts", "Surprising Travel Facts", 
-    "Unique Travel Destinations", "Travel Humor", "Funny Geography", "Comedic Travel Guide", 
-    "Hilarious Travel Experiences", "Strange Country Traditions", "Wacky Travel Stories", 
-    "Unusual Tourist Attractions", "Lesser-Known Countries", "Obscure Countries Explained", 
-    "Entertaining Geography", "Playful Travel Insights", "Underrated Travel Destinations", 
-    "Countries You Didn't Know Existed", "Travel Fun Facts", "Interesting Country Stories", 
-    "Geography Comedy", "Funniest Country Names", "Humorous Travel Show", "Geography for Fun", 
-    "Travel YouTube with Humor", "Travel and Culture Comedy", "Funny Country Comparisons", 
-    "Smallest Countries in the World", "Strangest Borders in the World", "Tiny Country Big Impact", 
-    "Hilarious Country Comparisons", "Humorous Country Ratings", "Unexpected Travel Tips", 
-    "Funny Country Ratings", "Entertaining World Facts", "Comedic Country Stereotypes", 
-    "Travel Facts That Will Shock You", "Playful Cultural Insights", "Comedy Travel Content", 
-    "Hidden Gems Around the World", "Bizarre Country Facts", "Unbelievable Geography Facts", 
-    "Weirdest Places on Earth", "Satirical Travel Reviews", "Best Small Countries to Visit", 
-    "Hilarious Tourist Mistakes", "Comedic World History", "Weirdest Food from Around the World"
+    "Funny travel", "Travel humor", "Country facts", "Weird laws", "Funny geography", 
+    "Hilarious maps", "Travel jokes", "Comedic travel", "Funny world facts", 
+    "Strange countries", "Crazy borders", "Quirky culture", "Odd traditions", 
+    "Hidden gems", "Bizarre places", "Fun geography", "Wacky travel", 
+    "Travel memes", "Unexpected facts", "Tourist mistakes", "Smallest countries", 
+    "Funny stereotypes", "Weirdest foods", "Hilarious accents", "Travel fails", 
+    "Funny comparisons", "Comedic history", "Surprising travel", "Humor travel guide", 
+    "Odd travel tips", "Unique countries", "Weird world", "Strange landmarks", 
+    "Obscure places", "Tiny nations", "Wacky history", "Fun world trivia", 
+    "Shocking facts", "Funny maps", "Comedic facts", "Weird cultures", 
+    "Ridiculous customs", "Bizarre traditions", "Hilarious history", "Geography humor", 
+    "Travel comedy", "Funny travel show", "Odd geography", "Crazy travel tips", 
+    "Satirical travel", "Humorous maps"
 ]
 
 # Fetch Data Button
