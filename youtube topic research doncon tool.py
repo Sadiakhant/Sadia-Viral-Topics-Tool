@@ -16,19 +16,25 @@ days = st.number_input("Enter Days to Search (1-30):", min_value=1, max_value=30
 
 # List of broader keywords
 keywords = [
-    "Funny travel", "Travel humor", "Country facts", "Weird laws", "Funny geography",
-    "Hilarious maps", "Travel jokes", "Comedic travel", "Funny world facts",
-    "Strange countries", "Crazy borders", "Quirky culture", "Odd traditions",
-    "Hidden gems", "Bizarre places", "Fun geography", "Wacky travel",
-    "Travel memes", "Unexpected facts", "Tourist mistakes", "Smallest countries",
-    "Funny stereotypes", "Weirdest foods", "Hilarious accents", "Travel fails",
-    "Funny comparisons", "Comedic history", "Surprising travel", "Humor travel guide",
-    "Odd travel tips", "Unique countries", "Weird world", "Strange landmarks",
-    "Obscure places", "Tiny nations", "Wacky history", "Fun world trivia",
-    "Shocking facts", "Funny maps", "Comedic facts", "Weird cultures",
-    "Ridiculous customs", "Bizarre traditions", "Hilarious history", "Geography humor",
-    "Travel comedy", "Funny travel show", "Odd geography", "Crazy travel tips",
-    "Satirical travel", "Humorous maps"
+    "Influencer culture", "Social commentary", "Internet drama", "Beauty standards",
+    "Plastic surgery trends", "Celebrity culture", "Toxic beauty standards", 
+    "Influencer scandals", "Viral trends", "Cancel culture", "YouTube drama", 
+    "Exposing influencers", "Controversial opinions", "Social media criticism", 
+    "Fake influencers", "Why influencers fail", "Beauty industry lies", 
+    "Influencer downfall", "Toxic celebrity culture", "Truth about influencers", 
+    "Social media lies", "Why influencers are hated", "Influencer exposure", 
+    "Falling influencer careers", "Scandalous influencers", "Influencer controversy",
+    "The influencer era is over", "The biggest lies influencers tell", 
+    "Social media fake life", "Internet fame disaster", "Influencer hypocrisy",
+    "Celebrity plastic surgery", "Exposing beauty industry", "The dark side of fame",
+    "Fake social media life", "What influencers don’t tell you", "Why influencers lie",
+    "Social media deception", "Influencer regrets", "Influencer PR crisis",
+    "The end of influencer culture", "YouTube influencer downfall", 
+    "Why social media is toxic", "The influencer scam", "Plastic surgery gone wrong",
+    "Unrealistic beauty standards", "Social media manipulation", 
+    "The truth about viral influencers", "How influencers fool you", 
+    "Why influencer marketing is dying", "Fake beauty influencers",
+    "The influencer industry is broken"
 ]
 
 # Fetch Data Button
